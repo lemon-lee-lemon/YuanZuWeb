@@ -6,19 +6,19 @@
  main{ 
      /*banner*/
     .banner{width:1200px;height:438px;margin:4px auto 25px;position: relative;
-    	  .banner-rolling{width:1010px;height:438px; overflow:hidden;position:relative;
-    	  .ratation-chart{position:absolute;left:0;top:0;li{float: left;
-    	  	          img{width:1010px;height:438px;}}}
-    	  }
+        .banner-rolling{width:1010px;height:438px; overflow:hidden;position:relative;
+        .ratation-chart{position:absolute;left:0;top:0;li{float: left;
+                    img{width:1010px;height:438px;}}}
+        }
          .roll-Btns{width:150px;height:10px; position:absolute;left:546px;bottom:25px;z-index: 6px;
-		          	li{width:10px;height:10px;float:left;margin:0 4px; border-radius: 50%;cursor: pointer;background: white;}
-		          	.ac{background-color: #c40237;}
+                li{width:10px;height:10px;float:left;margin:0 4px; border-radius: 50%;cursor: pointer;background: white;}
+                .ac{background-color: #c40237;}
           }
          .goNext{display: inline-block; width:10px;height:10px;background:red;position:absolute;top:250px;right:300px;opacity: 0;}
          .hot-news{position:absolute;width:190px;height:229px;right:0;top:0;
                    .huiTitle{font-size: 14px;color: #777777; padding:11px 32px;background:#efefef;}
                    .main-notice{li{height:30px;line-height: 30px;margin-left:24px;
-                   	a{color:#666666;}a:hover{color:#dc0330;};}}}
+                    a{color:#666666;}a:hover{color:#dc0330;};}}}
           .choc-cake{position:absolute;right:0;bottom:0;}
     }
     /*mainHotRec*/
@@ -27,7 +27,8 @@
                 .hot-title{width:100%;height:57px;border-bottom: 3px solid #000;margin-bottom: 10px;
                          li{width:25%;height:57px;float:left;text-align: center;line-height:57px;cursor:pointer;}
                 .titleChange{border-bottom:3px solid #c5023a;
-                            background:url("/static/imgs/static0/images/icon_arrow4.png") no-repeat center bottom;}}
+                            background:url("/static/imgs/static0/images/icon_arrow4.png") no-repeat center bottom;}
+                }
                 .hot-tab{width:928px;
                 .productList{display:none; 
                             li{float:left;width:183px;height:249px;margin-right:7px;padding:13px 18px 0;
@@ -40,20 +41,25 @@
         }
         .hotRec-Simple{width:273px;height:300px; margin-top: 30px;float:right;}
     }
-    .main-CakeCate{width:1200px;margin:0 auto 10px auto;background:#fff;overflow:hidden;
-        .categoryTitle{height:40px;line-height:40px;font-size:18px;padding-left: 40px;border-bottom:2px solid #e4004f;
-            background:url("/static/imgs/01-indexImgs/-Much-.png") no-repeat left center;
-            background-size: 25px 25px;}
+    .main-CakeCate{width:1200px;margin:0 auto 10px auto;overflow:hidden;
+        .categoryTitle{height:40px;line-height:40px;padding-left:50px; font-size:18px;border-bottom:2px solid #e4004f;
+            position:relative;img{width:25px;height:25px;position:absolute;left:9px;top:7px;}}
         .main-largeCake{width:316px;height:367px;margin-left:20px;float:left; display:inline-block;
           position:relative;padding-bottom: 15px;overflow:hidden;
-        .slide-light{width:316px;height:367px;position:absolute;left:-50%;top:-50%;display:none;
+        .slide-light{width:316px;height:367px;position:absolute;left:-160px;top:-190px;
           background:url("/static/imgs/01-indexImgs/guang.png") no-repeat left top;}}
-        .productList1{li{width:285px;height:367px;float:left;cursor:pointer; text-align: center;overflow:hidden;
+        .productList1{li{position:relative; width:286px;height:367px;float:left;cursor:pointer; text-align: center;
+          overflow:hidden;margin-right:1px;transition: all 0.1s ease-out;background-color:#fff;
           img{width:180px;height:180px;display:block;margin:50px auto 10px auto;}
           strong{font-size:18px;height:28px;line-height:28px;font-weight: bold;}
           span{height:19px;line-height:19px;}
-          em{height:28px;line-height:28px;font-size:18px;color:#e70050;display:block;}}}
+          em{height:28px;line-height:28px;font-size:18px;color:#e70050;display:block;}}
+          li:hover{color:#e70050;top:-15px;box-shadow:2px 0 15px #ccc;};}
        }
+    .selected-Activities{width:1200px;margin:0 auto 10px auto;overflow:hidden;
+      .sel-Title{height:40px;line-height:40px;font-size:18px;margin-bottom:10px;}
+      .sel-CakrList{li{float:left;width:375px;height:200px;padding:15px 0 2px 18px;background-color:#fff; }
+        img{width:100%;height:100%;}}}
  }
 
 

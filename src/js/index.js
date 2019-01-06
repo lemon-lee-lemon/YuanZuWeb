@@ -1,6 +1,6 @@
 require(["./requirejs.config"],()=>{
   
-	require(["jquery","header","footer"],()=>{
+  require(["jquery","header","footer"],()=>{
         /*轮播图*/
         let $ul =  $("#ratation-chart"),
             $items = $ul.children(),
@@ -48,8 +48,14 @@ require(["./requirejs.config"],()=>{
         let $productList = $("#hotTab").children();
         $productList.eq($(this).index()).addClass('productListShow').siblings().removeClass('productListShow');
      })
+     /*Cake Category*/    
+    $(".main-largeCake").hover(function(){   //光线划过效果
+      $(this).find($(".slide-light")).animate({left:200,top:200},"slow");},
+      function(){$(this).find($(".slide-light")).css({"left":-160,"top":-190});})
 
-	});
+   
+
+  });
 
 }) 
 
