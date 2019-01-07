@@ -7,7 +7,95 @@
 </head>
 <body>
 	<header></header>
-    
+    <main>
+    	<div class="main-catalog">
+    		<a href="/index.html">主页</a>&nbsp;>
+             <a href="javascript:;">登录/注册</a>
+    	</div>
+    	<div class="main-container">
+    		<!--登录注册头部-->
+    		<div class="main-header" id="main-header">
+    			<span class="switch-login addColor" id="switch-login">登录</span>
+    			<span class="switch-register" id="switch-register">注册</span>
+    			<i class="slideUnder" id="slideUnder"></i>
+    		</div>
+            <!--二维码-->
+            <div class="main-ewm"></div>
+            <!--登录-->
+    		<div class="conLogin" id="conLogin">
+    			<form id="formLogin">
+					<span class="smallNotice">邮箱或手机号：</span>				
+				    <label class="labelStyle">
+				    	<input type="text" placeholder="邮箱/手机号" name="telMailLogin" id="telMailLogin" class="public" />
+				    </label>
+					<span class="smallNotice">密码</span>
+				    <label class="labelStyle">
+				    	<input type="password" name="pasLogin" id="pasLogin" class="public"/>
+				    </label>
+				    <div class="helpLogin">
+				    	<input type="checkbox"  id="rememberLogin"/>自动登录
+				        <a href="javascript:;">忘记密码？</a>
+				    </div>
+				    <button  class="subLogin" id="subLogin">登录</button>
+			    <form>
+    		</div>
+    		<!--注册-->
+    		<div class="conRegister" id="conRegister">
+    			<form id="formRegister">
+
+    				<span class="smallNotice">手机号：</span>	
+    				<img src="/static/imgs/01-indexImgs/mandatory.gif" alt="必填" title="必填" class="mustFill"/>
+    				<label class="labelStyle" id="telLabel">
+    					<input type="text" name="telRegister" id="telRegister" class="public" />
+    				</label>
+    				<i class="warn-notice" id="warn-notice-telEmp">x手机号码不能为空</i>   
+                    <i class="warn-notice" id="warn-notice-style">x手机号码格式不正确</i>
+                    <i class="warn-notice" id="warn-notice-exist">x手机号码已存在</i>             
+
+                    <span class="smallNotice">验证码：</span>
+                    <img src="/static/imgs/01-indexImgs/mandatory.gif" alt="必填" title="必填" class="mustFill"/>
+                    <div class="conTest">
+                    	<img src="/static/imgs/01-indexImgs/yzm.jpg"/>                    
+                        <a href="javascript:;" class="refresh">刷新</a>
+                    </div>
+                    <label class="labelStyle"><input type="text" id="yzmRegister" class="public"/></label>
+                    <i class="warn-notice" id="warn-notice-yzm">x验证码不能为空</i>
+
+                    <span class="smallNotice">出生日期：&nbsp;&nbsp;(<em>*</em>提示:&nbsp;会员生日有惊喜哦！一旦填写，不能修改。)</span>
+                    <label class="labelStyle labelStyle2"><input type="text" id="birthRegister" class="public"/></label>
+
+                    <span class="smallNotice">邮箱：</span>
+                    <label class="labelStyle labelStyle2">
+                    	<input type="text" id="emailRegister" name="emailRegister" class="public"/>
+                    </label>
+                     <i class="warn-notice" id="warn-notice-email">x邮箱格式不正确</i>
+
+                    <span class="smallNotice">密码：</span>
+                    <img src="/static/imgs/01-indexImgs/mandatory.gif" alt="必填" title="必填" class="mustFill"/>
+                    <label class="labelStyle">
+                    	<input type="password" name="pasRegister" id="pasRegister" class="public"/>
+                    </label>
+                    <i class="warn-notice" id="warn-notice-pas">x密码不能小于6位</i> 
+
+                    <span class="smallNotice">确认密码：</span>
+                    <img src="/static/imgs/01-indexImgs/mandatory.gif" alt="必填" title="必填" class="mustFill"/>
+                    <label class="labelStyle">
+                    	<input type="password"  name="pasRegister2" id="pasRegister2" class="public"/>
+                    </label>
+                    <i class="warn-notice" id="warn-notice-pas2">x两次密码不一致!</i>
+
+                    <div class="helpRegister">
+				    	<input type="checkbox" checked="checked"/>同意注册协议
+				        <a href="javascript:;">注册协议</a>
+				    </div>
+
+				    <button class="subRegister" id="subRegister">同意协议并注册</button>
+				    <span class="bitianNotice">标有星号 (*) 的字段是必填字段</span>
+    			</form>
+    		</div>
+
+    	</div>
+    </main>
 	<footer></footer>
 	<script src="/libs/require/require.js" data-main="/js/login.js"></script>
 </body>

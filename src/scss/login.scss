@@ -1,3 +1,43 @@
 @import "./component/header.scss";
 @import "./component/footer.scss";
 @import "./component/base.scss";
+
+.main-catalog{width:1200px;height: 45px;line-height: 45px;margin: 0 auto;
+              a:hover{color:#dc0330;text-decoration: none;}}
+/* 登录注册界面 */
+.main-container{width:1170px;margin:0 auto; border:1px solid #eeeeee;;background-color: #fff;
+	           em{color:red;}overflow: hidden;box-shadow:2px 2px 5px #ccc; position:relative;a:hover{color:#dc0330;}
+	  .main-ewm{width:200px;height:200px;position:absolute;top:92px;right:136px;
+	  	    background:url("/static/imgs/01-indexImgs/-20180628113448.jpg") no-repeat;
+	  	    background-size: 100% 100%;}
+      .main-header{height:50px;border-bottom: 1px solid #e2e2e2;font-size: 15px;display: flex;
+      	          align-items: center;justify-content: center;position: relative;
+      span{margin:0 100px;cursor: pointer;}
+      .switch-login:hover{color:#000;} .switch-register:hover{color:#000;} 
+      .addColor{color:#000;}   
+      .slideUnder{width:70px;border: 1px solid #848484;position:absolute;bottom: 0;left: 0;}}
+      .labelStyle{display:block; width:368px; height:37px;border:1px solid #d7d7d7;}     
+      .smallNotice{display:block;margin-top: 18px;}
+      .public{width:363px;padding-left: 5px; height:37px;border:none;color:#999;font-size:15px;outline: none;
+      	}
+      /*登录*/
+      .conLogin{width:370px;height:229px; margin:16px 65px 40px 402px;position:relative;
+       overflow:hidden;color:#999;>span{display:block;}input{color:#000;}      
+        .helpLogin{position:absolute;top:160px;width:370px;color:#000;
+               >a{position:absolute;right: 2px;}}
+        .subLogin{border:none;width:100%;height:38px;border-radius: 3px;color:#fff;font-size: 14px;text-align: center;
+      	outline:none;background-color:#8975B4;position:absolute;bottom:0;letter-spacing: 4px;cursor: pointer;}}      
+      /*注册*/
+      .conRegister{width:370px;height:726px; margin:16px 65px 40px 402px;position:relative;color:#999;
+          overflow:hidden;display:none;input{color:#000;}
+          .warn-notice{display:block;color:red;display:none;} .mustFill{display:block;}
+         .conTest{height:38px;position:relative;}
+         .refresh{width:124px;height:38px;display:inline-block; line-height:38px;text-align: center;
+         	background-color:#8975B4;color:#fff;font-size: 14px;position:absolute;right:0;top:0;}
+         .helpRegister{width:370px;margin:18px auto 13px;position:relative;color:#000;
+         	>a{position:absolute;right:0;color:#999;text-decoration:underline;}}
+         .subRegister{border:none;width:100%;height:38px;border-radius: 3px;color:#fff;font-size: 14px;text-align: center;
+      	     outline:none;background-color:#8975B4;cursor: pointer;}
+      	 .bitianNotice{color:#000;position:absolute;right:0;}
+         }
+      }

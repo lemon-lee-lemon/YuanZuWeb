@@ -1,4 +1,4 @@
-define(["jquery"],()=>{
+define(["jquery","cookie"],()=>{
    class Header{
            constructor(){
                this.init();
@@ -12,6 +12,7 @@ define(["jquery"],()=>{
            	    	this.ewmShow();
            	    	this.srhInput();
            	    	this.mallList();
+                  this.userName();
            	    })                
            }
            ewmShow(){  //二维码显示隐藏
@@ -50,6 +51,20 @@ define(["jquery"],()=>{
                   		$("#list_All").hide();
                   	}
                   })
+           }
+           userName(){  //头部显示用户名--新增“退出”按钮
+                if($.cookie("userInfor")){
+                     var userTel = JSON.parse($.cookie("userInfor")).tel;
+                     $("#login_register").html(userTel).next().html("&nbsp;&nbsp;欢迎您");
+                     $("#login_register").parent().css({"width":150});                    
+                     
+                     $("<li>").html(`<a href="##">退出</a>`).appendTo($("#smallNav"));
+                     
+                     $("#smallNav li:last-child").on("click",function(){
+                         $.cookie("userInfor",'',{expires:-1,path:"/"});
+                         window.location.href="/html/login.html";
+                     })
+                }
            }
 
    }

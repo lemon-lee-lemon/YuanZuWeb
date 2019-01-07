@@ -6,7 +6,10 @@ require.config({  //配置文件
 		"cookie":"libs/jquery/jquery.cookie",
 		"bootstrap":"libs/bootstrap/js/bootstrap",
 		"header":"js/component/header",
-		"footer":"js/component/footer"
+		"footer":"js/component/footer",
+		"template": "libs/template-web",
+		"url":"js/component/url",
+		"item":"js/component/item"
 		
 	}
 })
