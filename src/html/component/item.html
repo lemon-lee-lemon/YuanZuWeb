@@ -1,15 +1,18 @@
-<ul>
-	
+<ul>	
+	<!-- 相当于对list循环 -->
 	<script type="text/html" id="list-template">
-		{{each list item i}}
+		{{each list item i}}  
 		
-		<li>
-			<div class="img">
+		<li class="goodsList">
+			<div class="imageShow">
 				<a href="/html/detail.html?id={{ item.id }}"><img src="{{ item.img }}"></a>
 			</div>
-			<p class="title">{{ item.title }}</p>
-			<p class="price">{{ item.price }}</p>
-		
+			<div class="titPub">
+				<p><a href="javascript:;">{{ item.title }}</a></p>
+			    <p class="titSmall">{{ item.title2 }}</p>
+			</div>			
+			<span class="goodsPrice">{{ item.price }}</span>
+			<span class="addCart"><a href="javascript:;" >立即购买</a></span>		
 		</li>
 		{{/each}}
 	</script>

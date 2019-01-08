@@ -1,0 +1,22 @@
+@import "./component/base.scss";
+@import "./component/header.scss";
+@import "./component/footer.scss";
+@import "./component/itemaside.scss";
+
+
+main{width:1200px;margin:0 auto;a:hover{color:#dc0330;}
+   .main-catalog{height: 46px;line-height: 46px;}
+    section{width:990px;min-height:2000px;float:left;border:1px solid red;}
+
+
+
+
+aside{width:195px; min-height:300px;float:right;background-color:#fff;
+   .loveTitle{display:block; height:30px;line-height: 30px;background-color:#e50150;padding:0 13px;
+   	  color:#fff;margin-bottom:10px;font-size: 14px;}}
+   	.complateAside{margin:auto 12px;}
+}
+
+
+
+

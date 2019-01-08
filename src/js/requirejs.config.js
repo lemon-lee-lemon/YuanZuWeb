@@ -9,7 +9,8 @@ require.config({  //配置文件
 		"footer":"js/component/footer",
 		"template": "libs/template-web",
 		"url":"js/component/url",
-		"item":"js/component/item"
+		"item":"js/component/item",
+		"itemaside":"js/component/itemaside"
 		
 	}
 })
