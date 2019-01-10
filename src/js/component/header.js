@@ -13,7 +13,7 @@ define(["jquery","cookie"],()=>{
            	    	this.srhInput();
            	    	this.mallList();
 					this.userNameShow();
-					/* this.baiduNozzle(); */
+					this.baiduNozzle();
            	    })                
            }
            ewmShow(){  //二维码显示隐藏
@@ -31,26 +31,24 @@ define(["jquery","cookie"],()=>{
                   $("#srh_tex").on("focus",function(){
 		              if($("#srh_tex").val()==="请输入搜索名称"){
 						  $("#srh_tex").val("");						 
-						
-		              }else if($("#srh_tex").val()!=""){
-						$("#input-Infor").css({"backgroundColor":"#e8f0fe"});
-					  }
+						  $("#input-Infor").css({"backgroundColor":"#e8f0fe"});
+						  $("#srh_tex").css({"backgroundColor":"#e8f0fe"});
+		              }
 	              });
 	              $("#srh_tex").on("blur",function(){
 		              if($("#srh_tex").val()===""){
 			             $("#srh_tex").val("请输入搜索名称");
-		              }
+					  }
+					  $("#baiDuSrh").hide();
 				  });
 				 
 		   }
-		    /* 搜索框引入百度接口 --要有name属性*/
-		  /*  baiduNozzle(){   
+		    /* 搜索框引入百度接口 --要有name属性 --wd!*/
+		  baiduNozzle(){   
                  $("#input-Infor").on("submit",function(e){
-					 var str = decodeURIComponent($(this).serialize());
-					
-					 $.getJSON("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=?&"+str,
-					    function(res){
-							var data = res.s; console.log(res);
+					 var str =$(this).serialize();
+					 $.getJSON("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=?&"+str,function(res){
+							var data = res.s; 
 							$("#baiDuSrh").empty().show();
 							$.each(data,function(i,item){                                
                                  $("<li>").html(item).appendTo($("#baiDuSrh"));
@@ -62,7 +60,7 @@ define(["jquery","cookie"],()=>{
 						})
 					 e.preventDefault();
 				 })
-		   } */
+		   } 
            mallList(){   //商品列表滑入显示/隐藏
                   $("#mall_title").on("mouseenter",function(){
                   	$("#list_All").show();

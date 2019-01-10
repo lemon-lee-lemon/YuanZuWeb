@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>企业试吃|元祖官网</title>
+    <link rel="stylesheet" href="/css/foretaste.css">
+</head>
+<body>
+    <header></header>
+    <main>
+        <!-- 头部list -->
+        <div class="main-catalog">
+            <a href="/index.html">主页</a>&nbsp;>			
+            <a href="javascript:;">企业试吃</a>
+        </div>	 
+        <div class="activities">
+            <img src="/static/imgs/03-brand/taste_banner.jpg">
+            <ul class="tasteTerm">
+                <li>元祖企业试吃活动</li>
+                <li>申报试吃条件：</li>
+                <li>1、试吃对象：公司企业或机构单位；</li>
+                <li>2、试吃活动人数：需有12位~30位人员参与；</li>
+                <li>3、试吃活动场所：需要提供茶水间、会议室、休息室或可聚集的场地；</li>
+                <li>4、试吃介绍：元祖配送人员需要当场切分，并为大家做简短介绍；</li>
+            </ul>
+            <ul class="applicate">
+                <li>元祖试吃申请方式：</li>
+                <li>  1、元祖官网申请，如下表填写详细信息，发送邮箱至:</li>
+                <li> services@ganso.net;(该表格只适用PC端)</li>
+                <li>2、拨打<span>400-110-3737</span>客服热线咨询申请；</li>
+                <li>3、因申请客户众多，我们会尽量在5个工作日内联系您，</li>
+                <li>敬请耐心等待，感谢您的支持。</li>
+            </ul>
+        </div>
+        <p class="styleOne">方式一、请您正确填写下列信息</p>
+        <div class="userInformation">
+             <div class="userTable">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr> 
+                            <td>&nbsp;</td>
+                            <td>公司名称
+                                <input type="text" placeholder="请输入公司全称" class="inputClass">
+                                <span>&nbsp;*</span>
+                            </td>
+                            <td>
+                                    品尝场所：
+                                    <select class="inputClass">
+                                        <option value="休息室">休息室</option>
+                                        <option value="茶水间">茶水间</option>
+                                        <option value="会议室">会议室</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>公司区域
+                                    <select class="province">
+                                            <option value="省份">省份</option>
+                                            <option value="安徽">安徽</option>
+                                            <option value="福建">福建</option>
+                                            <option value="其他">其他</option>
+                                    </select>
+                                    <select class="province">
+                                            <option value="地级市">地级市</option>                                            
+                                    </select>
+                                    <select class="country">
+                                         <option value="市、县级市、县">市、县级市、县</option>                                           
+                                    </select>
+                            </td>
+                            <td>
+                                参与人数
+                                <input type="text" placeholder="请输入参与品尝活动的人员数量" class="inputClass">
+                                <span>&nbsp;*</span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                                <td>&nbsp;</td>
+                                <td>公司地址
+                                        <input type="text" placeholder="请输入公司的详细地址" class="inputClass">
+                                        <span>&nbsp;*</span>
+                                </td>
+                                <td>
+                                    申请人
+                                      <input type="text" placeholder="请输入您的姓名" class="inputClass">
+                                      <span>&nbsp;*</span>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td>&nbsp;</td>
+                                <td>公司人数
+                                        <input type="text" placeholder="请输入公司的人员数量" class="inputClass">
+                                        <span>&nbsp;*</span>
+                                </td>
+                                <td>
+                                    手机号码
+                                      <input type="text" placeholder="请输入您的手机号码" class="inputClass">
+                                      <span>&nbsp;*</span>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td>&nbsp;</td>
+                                <td>公司部门
+                                        <input type="text" placeholder="请输入公司申请品尝活动的部门" class="inputClass">
+                                        <span>&nbsp;*</span>
+                                </td>
+                                <td>
+                                    办公电话
+                                      <input type="text" placeholder="请输您的办公电话" class="inputClass">
+                                      <span>&nbsp;*</span>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td>
+                                    备注说明
+                                      <textarea name="Note" placeholder="请输入备注信息" class="inputClass"></textarea>
+                                </td>
+                        </tr>
+                        <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="center">
+                                <div class="black">
+                                    <a onclick="sendMail()" class="apply">提交申请</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+        </div>
+
+    </main>
+    <footer></footer>
+    <script src="/libs/require/require.js" data-main="/js/foretaste.js"></script>
+</body>
+</html>

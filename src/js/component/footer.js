@@ -32,15 +32,13 @@ define(["jquery","cookie"],()=>{
             })
         }   
         cookieNum(){
-            if($.cookie("buyInfor")&&$.cookie("userInfor")){
+            if($.cookie("buyInfor")){
                 let cookieNum=  JSON.parse($.cookie("buyInfor"));
                 let cartNum = 0;
                 cookieNum.forEach((item,i) => {
                 cartNum += item.num;               
                 });
                 $("#cartNum").html(cartNum);    
-                }else{
-                    $("#cartNum").html(0);  
                 }
         }     
     }

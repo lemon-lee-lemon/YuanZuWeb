@@ -1,0 +1,30 @@
+@import "./component/base.scss";
+@import "./component/footer.scss";
+@import "./component/header.scss";
+
+main{width:1200px;margin:0 auto;a:hover{color: #dc0330;}
+    .main-catalog{height: 46px;line-height: 46px;}
+    .main-introduce{width:1125px;margin:0 auto;overflow: hidden;text-align: center;
+       .brand-intro{height:135px;margin-top: 35px;font-size: 18px;margin-bottom: 34px;
+        padding-top: 10px;background:url("/static/imgs/03-brand/solagen_r3_c5.gif") no-repeat top center;
+         em{color: #fff;padding-left: 106px;}
+         h3{font-size: 23px;padding-top: 50px;height: 55px;
+            background: url("/static/imgs/03-brand/solagen_r5_c6.gif") no-repeat bottom center;}
+        }
+    }
+    p{font-size: 16px;line-height: 34px;color: #6b6b6b;margin-bottom: 160px;}
+    .brandPosition{height: 870px;position: relative; margin-bottom: 70px;
+        background:url("/static/imgs/03-brand/solagen_r3_c5.gif") no-repeat top center;
+        em{font-size: 18px;color:#fff;position: absolute;left: 620px;top:10px;}
+       img{position: absolute;left: 117px;top:106px;}
+       .pos-culture{
+           dl{dt{font-size: 24px;font-family:"黑体";line-height: 80px;}
+              dd{font-size: 16px;line-height: 38px;}}
+           .fir{width:450px;position: absolute;text-align: left; left:487px ;top:492px;}
+           .sec{width:850px;position: absolute;left: 32px;top: 747px;}           
+           img{position: absolute;top:460px;left: 15px;}           
+        }
+       
+      
+   }
+}

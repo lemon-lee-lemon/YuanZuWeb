@@ -150,7 +150,17 @@ require(["./requirejs.config"],()=>{
                /* 商品金额总计 */               
                $("#cartTotalMoney").html("￥"+cartTotalMoney.toFixed(2));
                $("#total").html("￥"+cartTotalMoney.toFixed(2));
-
+               
+               /* 进入结算页面 */
+               $("#checkout").on("click",function(){
+                   if($.cookie("userInfor")){
+                         location.href="/html/myCart.html";
+                   }else{
+                       if(confirm("您还没登录，赶快去登录吧~")){
+                          location.href="/html/login.html";
+                       }
+                   }
+               })
            }/* end */
 
            

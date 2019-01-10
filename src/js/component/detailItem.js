@@ -117,6 +117,13 @@ define(["jquery","template","parabola","cookie"],($,template)=>{
 
               /* 点击“立即购买” */  
               $("#soonBuy").on("click",()=>{
+                  if($.cookie("userInfor")){
+                       location.href="/html/myCart.html";
+                  }else{
+                    if(confirm("您还没登录，赶快去登录吧~")){
+                       location.href = "/html/login.html";
+                    }
+                  }
                 this.getCookie(objId);
               })
               
@@ -145,12 +152,9 @@ define(["jquery","template","parabola","cookie"],($,template)=>{
                   
             panduan? arrBuyInfor[index].num+=objBuyInfor.num : arrBuyInfor.push(objBuyInfor);
 
-            /* 用户是否登录 */
-            if($.cookie("userInfor")){
-                $.cookie("buyInfor",JSON.stringify(arrBuyInfor),{expires:100,path:"/"});
-            }else{
-                $.cookie("buyInfor",JSON.stringify(arrBuyInfor),{path:"/"}); 
-            }               
+           
+             $.cookie("buyInfor",JSON.stringify(arrBuyInfor),{expires:100,path:"/"});
+                      
            /*  console.log( $.cookie("buyInfor"));  */
             
             /* cookie渲染右边栏商品数量 */
