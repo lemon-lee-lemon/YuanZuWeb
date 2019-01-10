@@ -91,80 +91,90 @@ define(["jquery","template","parabola","cookie"],($,template)=>{
                 $("#bigPicShow").hide().next().show();
             })   
         }
+
         /* 购物车 */
         addCart(objId){
-
-            /* 抛入购物车动画效果 */ 
-               $("#addCart").on("click",function(){
+            this.changeNum();          
+            
+            /* 点击“加入购物车” 抛入购物车动画效果 */ 
+               $("#addCart").on("click",()=>{
                   $("#moni").show().find("img").prop("src",$("#smallBox img").prop("src"));
                   let hei=50+$(window).scrollTop();
                    var bool=new Parabola({
                       el: "#moni",
-                      offset: [680, hei],
+                      offset: [650, hei],
                      /*  targetEl: $("#btnCart"), */
                       curvature: 0.0002,
-                      duration: 1000,
+                      duration: 600,
                       callback: function(){                       
                         $("#moni").hide();
                         bool.reset();
                       }                      
                    });
-                    bool.start();
+                    bool.start();                 
+                 this.getCookie(objId);
+               })
 
-            /* 加入购物车，存cookie，将数据渲染到购物车 */
-                  let objBuyInfor={
-                      id : parseInt(objId.id),
-                      price : $("#youhuiPrice").html(),
-                      name : $("#purTitle").html(),
-                      num : parseInt($("#buyNumbers").val())
-                  };
-                  
-                  
-                let arrBuyInfor = $.cookie("buyInfor")? JSON.parse($.cookie("buyInfor")):[];
-               /*  console.log(arrBuyInfor); */
-                var index;
-                let panduan=arrBuyInfor.some(function(item,i){
-                    index = i;
-                    return objBuyInfor.id===item.id;
-                })
-                /* console.log(panduan,index); */
-                panduan? arrBuyInfor[index].num++ : arrBuyInfor.push(objBuyInfor);
-                
-                if($.cookie("userInfor")){
-                    $.cookie("buyInfor",JSON.stringify(arrBuyInfor),{expires:100,path:"/"});
-                }else{
-                    $.cookie("buyInfor",JSON.stringify(arrBuyInfor),{path:"/"}); 
-                }
+              /* 点击“立即购买” */  
+              $("#soonBuy").on("click",()=>{
+                this.getCookie(objId);
+              })
+              
+              
                
-              /* console.log( $.cookie("userInfor"));  */
-                
-                 /* cookie渲染右边栏商品数量 */
-               if($.cookie("buyInfor")){
+        };
+       
+        /* 存cookie单独封装一个方法 */
+       getCookie(objId){ 
+            let objBuyInfor={
+                id : parseInt(objId.id),
+                src :$("#smallBox img").prop("src"),
+                url:location.href,
+                title:$("#purTitle").html(),
+                price : $("#youhuiPrice").html().slice(1),
+                name : $("#purTitle").html(),
+                num : parseInt($("#buyNumbers").val())
+            };
+           /*  console.log(objBuyInfor); */
+            let arrBuyInfor = $.cookie("buyInfor")? JSON.parse($.cookie("buyInfor")):[];             
+            let index;
+            let panduan=arrBuyInfor.some(function(item,i){
+                index = i;
+                return objBuyInfor.id===item.id;
+            })   
+                  
+            panduan? arrBuyInfor[index].num+=objBuyInfor.num : arrBuyInfor.push(objBuyInfor);
+
+            /* 用户是否登录 */
+            if($.cookie("userInfor")){
+                $.cookie("buyInfor",JSON.stringify(arrBuyInfor),{expires:100,path:"/"});
+            }else{
+                $.cookie("buyInfor",JSON.stringify(arrBuyInfor),{path:"/"}); 
+            }               
+           /*  console.log( $.cookie("buyInfor"));  */
+            
+            /* cookie渲染右边栏商品数量 */
+            if($.cookie("buyInfor")){
                 let cookieNum=  JSON.parse($.cookie("buyInfor"));
                 let cartNum = 0;
                 cookieNum.forEach((item,i) => {
                 cartNum += item.num;               
                 });
                 $("#cartNum").html(cartNum);    
-                }
-               })
+            }
 
-               this.channgeNum();
+        };
 
-
-              
-               
-        }
 
         /* 增减商品数量 */
-        channgeNum(){
+        changeNum(){
             $("#buyNum").on("click",".plus",()=>{
                 $("#buyNumbers").val(parseInt($("#buyNumbers").val())+1);
             }).on("click",".minus",()=>{               
                 $("#buyNumbers").val(parseInt($("#buyNumbers").val())-1);
                 if(parseInt($("#buyNumbers").val())<1) $("#buyNumbers").val(1);
             })
-        }
+        };
 
 
         

@@ -40,7 +40,7 @@ define(["jquery","cookie"],()=>{
                 });
                 $("#cartNum").html(cartNum);    
                 }else{
-                    $("#cartNum").html(0); 
+                    $("#cartNum").html(0);  
                 }
         }     
     }

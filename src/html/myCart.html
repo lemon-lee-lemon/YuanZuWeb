@@ -23,7 +23,8 @@
                 <li>4.在线支付</li>
             </ul>
         </div>
-        <div class="emptyCart">
+        <!-- 空购物车 -->
+        <div class="emptyCart" id="emptyCart">
              <img src="/static/imgs/02-list/icon_cart.png"/>
              <div class="emptyToIndex">
                     <em>您的购物车还是空的</em>
@@ -31,6 +32,53 @@
                     <a href="/index.html">返回首页</a>
              </div>
         </div>
+        <!-- 有商品时的购物车 -->
+        <div class="cartBox" id="cartBox">          
+              <table class="table-hover">
+                    <thead>                      
+                        <th>商品</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>操作</th>
+                    </thead>
+                    <tbody>
+                       <!--  <tr>                        
+                            <td class="cartGoodsname">
+                                <a href="javascript:;" class="wrapImg">
+                                <img src="/static/imgs/02-list/100000027_M.jpg" alt="" title=""/>
+                                </a>
+                                <em><a href="">蛋糕蛋糕蛋糕</a> </em>
+                            </td>                       
+                            <td class="cartPrice">￥555</td>
+                            <td class="cartQuantity">
+                                <div class="wrap" id="wrap">                          
+                                    <span >-</span>
+                                    <input type="text" value="1" id="settleNumber"/>
+                                    <span >+</span>
+                            </div>  
+                            </td>                       
+                            <td>
+                                <a href="javascript:;" class="delBtn" id="delBtn">移除</a>
+                            </td>
+                        </tr> -->
+                    </tbody>                 
+                </table>
+           
+            <!-- 结算 -->
+            <div class="cartSettleMent">
+                <div class="settleWrap">
+                    <h3>订单合计</h3>
+                    <p>商品数量总计：<span id="cartTotalNum"></span></p>
+                    <p>商品金额总计（不含运费）：<span id="cartTotalMoney"></span></p>
+                    <p >总计：<em id="total"></em></p>
+                </div>
+            </div>
+           <!-- 结算按钮 -->
+           <div class="cartSettleBtn">
+               <a href="/index.html">继续购物</a>
+               <a href="javascript:;">结算</a>
+           </div>
+    </div>
     </main>
 
     <footer></footer>

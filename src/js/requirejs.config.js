@@ -2,7 +2,7 @@ require.config({  //配置文件
 	baseUrl:"/",
 
 	paths:{
-		"jquery":"libs/jquery/jquery-1.11.3",
+		"jquery":"libs/jquery/jquery-3.2.1",
 		"parabola":"libs/jquery/parabola",
 		"cookie":"libs/jquery/jquery.cookie",
 		"bootstrap":"libs/bootstrap/js/bootstrap",
@@ -15,5 +15,8 @@ require.config({  //配置文件
 		"detailItem":"js/component/detailItem"
 		
 		
+	},
+	shim:{
+		"bootstrap":{deps:["jquery"]}
 	}
 })

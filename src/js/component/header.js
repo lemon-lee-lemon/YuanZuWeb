@@ -86,7 +86,7 @@ define(["jquery","cookie"],()=>{
                      $("<li>").html(`<a href="##">退出</a>`).appendTo($("#smallNav"));
                      
                      $("#smallNav li:last-child").on("click",function(){
-                         $.cookie("userInfor",'',{expires:-1,path:"/"});
+						 $.cookie("userInfor",'',{expires:-1,path:"/"});						 
                          window.location.href="/html/login.html";
                      })
                 }
