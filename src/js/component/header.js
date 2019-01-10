@@ -12,7 +12,8 @@ define(["jquery","cookie"],()=>{
            	    	this.ewmShow();
            	    	this.srhInput();
            	    	this.mallList();
-                  this.userName();
+					this.userNameShow();
+					/* this.baiduNozzle(); */
            	    })                
            }
            ewmShow(){  //二维码显示隐藏
@@ -29,15 +30,39 @@ define(["jquery","cookie"],()=>{
            srhInput(){  //搜索框模拟placeholder
                   $("#srh_tex").on("focus",function(){
 		              if($("#srh_tex").val()==="请输入搜索名称"){
-			              $("#srh_tex").val("");
-		              }
+						  $("#srh_tex").val("");						 
+						
+		              }else if($("#srh_tex").val()!=""){
+						$("#input-Infor").css({"backgroundColor":"#e8f0fe"});
+					  }
 	              });
 	              $("#srh_tex").on("blur",function(){
 		              if($("#srh_tex").val()===""){
 			             $("#srh_tex").val("请输入搜索名称");
 		              }
-	              }); 
-           }
+				  });
+				 
+		   }
+		    /* 搜索框引入百度接口 --要有name属性*/
+		  /*  baiduNozzle(){   
+                 $("#input-Infor").on("submit",function(e){
+					 var str = decodeURIComponent($(this).serialize());
+					
+					 $.getJSON("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=?&"+str,
+					    function(res){
+							var data = res.s; console.log(res);
+							$("#baiDuSrh").empty().show();
+							$.each(data,function(i,item){                                
+                                 $("<li>").html(item).appendTo($("#baiDuSrh"));
+							})
+						})
+						$("#baiDuSrh").on("click","li",function(){
+							$("#srh_tex").val($(this).html());
+							$("#baiDuSrh").hide();
+						})
+					 e.preventDefault();
+				 })
+		   } */
            mallList(){   //商品列表滑入显示/隐藏
                   $("#mall_title").on("mouseenter",function(){
                   	$("#list_All").show();
@@ -52,7 +77,7 @@ define(["jquery","cookie"],()=>{
                   	}
                   })
            }
-           userName(){  //头部显示用户名--新增“退出”按钮
+           userNameShow(){  //头部显示用户名--新增“退出”按钮
                 if($.cookie("userInfor")){
                      var userTel = JSON.parse($.cookie("userInfor")).tel;
                      $("#login_register").html(userTel).next().html("&nbsp;&nbsp;欢迎您");

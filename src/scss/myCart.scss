@@ -1,0 +1,20 @@
+@import "./component/base.scss";
+@import "./component/header.scss";
+@import "./component/footer.scss";
+
+main{width:1200px;margin:0 auto;a:hover{color:#dc0330;}
+    .main-catalog{height: 46px;line-height: 46px;}
+    .cartStep{width:1200px;height: 31px;overflow: hidden;line-height: 31px;border-radius: 10px;
+       ul{width:100%;background:url("/static/imgs/02-list/stepbg.jpg") no-repeat left top;float: left;   
+        li{float: left;width:25%;font-size: 14px;text-align: center;}
+       }
+       .stepColor{color: #fff;}   
+    }  
+    .emptyCart{width:460px;height: 145px;margin: 0 auto;padding-top: 98px;padding-bottom: 98px;
+       img{float: left;width:185px;height: 145px;margin-right: 25px;}
+       .emptyToIndex{font-size: 17px;line-height: 25px;padding-top: 29px;
+        em{display: block;float: left; }
+        a{display: block;float: left;width:80px;height: 30px;text-align: center;line-height: 30px;
+           background-color: #dc5551;color: #fff;font-size: 12px;margin-top: 4px;}} 
+    }  
+}

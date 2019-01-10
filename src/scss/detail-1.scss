@@ -1,0 +1,19 @@
+@import "./component/base.scss";
+@import "./component/footer.scss";
+@import "./component/header.scss";
+@import "./component/detailItem.scss"; 
+@import "./component/itemaside.scss";
+main{width:1200px;margin:0 auto;min-height:100px;
+     section{width:990px;min-height:1000px;float:left;margin-bottom: 20px;position: relative;overflow: hidden;}
+
+    aside{width:195px; min-height:300px;float:right;background-color:#fff;
+        .loveTitle{display:block; height:30px;line-height: 30px;background-color:#e50150;padding:0 13px;
+              color:#fff;margin-bottom:10px;font-size: 14px;}
+        .complateAside{margin:auto 12px;}
+    }
+    
+}
+/* 模拟商品跳进购物车人 */
+     .moni{width:45px;height: 45px;position: absolute;top:350px;left: 1200px;
+      z-index: 1000;display: none; background-color:#ccc; 
+      img{width:100%;height: 100%;}}

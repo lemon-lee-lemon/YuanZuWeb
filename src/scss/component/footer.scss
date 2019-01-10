@@ -13,8 +13,11 @@ footer{
     	a:hover{color:#000;}
     }
     .business-licence{width:260px;height:25px;margin-top:25px;margin-bottom: 62px;}
+    
+    /*右边侧边栏*/
     .footer-options{width:37px;height:100%;position:fixed;top:0; right:0;background-color:#444851;
-            ul{width:37px;height: 250px;background-color:#30343d;margin-top:237px;}
+			ul{width:37px;height: 250px;background-color:#30343d;margin-top:237px;}
+			   /* 返回顶部 */
                .btn-backtop{width:37px;height:36px; position:relative;border-bottom:1px solid #444851;
 	               	span{display:block;width:34px;height:36px;position:relative;z-index:100;
 	               		background:url("/static/imgs/01-indexImgs/iconlist.png") no-repeat left 1px;}
@@ -24,15 +27,17 @@ footer{
 	           	   span{display:block;width:34px;height:36px;position:relative;z-index:100;
 	               		background:url("/static/imgs/01-indexImgs/iconlist.png") no-repeat left -37px;}
 	               em{width:90px;height:36px;position:absolute;color:#fff;line-height:36px;top:0;right:-100px;
-	                	background-color:#ef285f;padding-left:10px;}}
-               .btn-cart{width:37px;height:139px;position:relative;border-bottom:1px solid #444851;
+						background-color:#ef285f;padding-left:10px;}}
+			   /* 购物车 */
+               .btn-cart{width:37px;height:139px;position:absolute;border-bottom:1px solid #444851;
 		           	strong{display:inline-block;width:37px;height:36px;
 	           		background:url("/static/imgs/01-indexImgs/iconlist.png") no-repeat 0 -175px}
 		           	i{display:inline-block;color:#fff;font-size:14px;padding:3px 12px; }
 		           	span{display:inline-block; width:20px;height:20px;background-color:#d02631;border-radius: 50%;text-align: center;
-		           		line-height:20px;color:#fff;margin:9px;}}
-		       .btn-collect{width:37px;height:36px;position:relative;border-bottom:1px solid #444851;
-		          	span{width:37px;height:36px;position:relative;z-index:100;
+						   line-height:20px;color:#fff;margin:9px;}}
+				/* 收藏 */
+		       .btn-collect{width:37px;height:36px;position:relative;border-bottom:1px solid #444851;top:139px;
+		          	span{width:37px;height:36px;z-index:100;
 	           		background:url("/static/imgs/01-indexImgs/iconlist.png") no-repeat 0 -72px;}
 	           		em{width:90px;height:36px;position:absolute;color:#fff;line-height:36px;top:0;right:-100px;
 	                	background-color:#ef285f;padding-left:10px;}  

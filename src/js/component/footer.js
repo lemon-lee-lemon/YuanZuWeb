@@ -1,4 +1,4 @@
-define(["jquery"],()=>{
+define(["jquery","cookie"],()=>{
     class Footer{
         constructor(){
             this.init();
@@ -7,7 +7,8 @@ define(["jquery"],()=>{
             $("footer").load("/html/component/footer.html",()=>{
                 this.footerSlide();
                 this.btnBackTop();
-                this.btnNewSale();
+                this.btnNewSale(); 
+                this.cookieNum();       
             });
             
         }
@@ -29,7 +30,19 @@ define(["jquery"],()=>{
             $("#btn-sales").on("click",function(){
                 $(window).scrollTop(0);
             })
-        }
+        }   
+        cookieNum(){
+            if($.cookie("buyInfor")&&$.cookie("userInfor")){
+                let cookieNum=  JSON.parse($.cookie("buyInfor"));
+                let cartNum = 0;
+                cookieNum.forEach((item,i) => {
+                cartNum += item.num;               
+                });
+                $("#cartNum").html(cartNum);    
+                }else{
+                    $("#cartNum").html(0); 
+                }
+        }     
     }
     return new Footer();
 })

@@ -1,0 +1,68 @@
+   
+    <script type="text/html" id="detailItem-template">
+        <!--购物选择页面-->
+        {{each list item i}}        
+        
+        <div class="purchaseInfor">
+            <div class="smallBox" id="smallBox">
+                <img src="{{item.img}}"/>
+                <div class="imgFdj" id="imgFdj"></div>
+            </div>
+
+            <div class="bigBox" id="bigBox">
+                <img src="{{item.img}}" id="bigImg" />
+            </div>
+            <!--小图片-->
+            <div class="bigUnder" id="bigUnder">
+                <span class="purPrev"><img src="/static/imgs/02-list/left.gif"></span>
+                <img src="{{item.img}}" class="imgbackColor" />
+                <img src="{{item.img5}}"/>
+                <img src="{{item.img6}}"/>
+                <img src="{{item.img}}"/>
+                <span class="purNext"><img src="/static/imgs/02-list/right.gif"></span>
+            </div>
+            <div class="purchaseList">
+                <p class="purTitle" id="purTitle">{{item.title}}</p>
+                <p class="youhuiPrice">优惠价：<span id="youhuiPrice">{{item.price}}</span></p>
+                <div class="buyNum" id="buyNum">数&nbsp;&nbsp;&nbsp;量：
+                    <input type="text" value="1" id="buyNumbers"/>
+                    <p class="plus">+</p>
+                    <p class="minus">-</p>
+                    <!--进去结算页面-->
+                    <div class="soonBuy" id="soonBuy">立即购买</div>
+                    <!--购物车-->
+                    <div class="addCart" id="addCart">加入购物车</div>
+                   
+                </div>
+                <div class="servicePro">
+                        服务承诺：<img src="/static/imgs/02-list/00.gif"/>
+                        精选食材<img src="/static/imgs/02-list/00.gif"/>
+                        品质保证<img src="/static/imgs/02-list/00.gif"/>
+                        五星服务<img src="/static/imgs/02-list/00.gif"/>
+                        贴心宅配
+                </div>
+                <p class="myHouse">商品编号：{{item.itemCode}} <span id="addToHouse">收藏</span> </p>
+            </div>
+            
+        </div>
+        <!--商品介绍图片-->
+        <div class="bigPicDetail">
+            <div class="detailTit" id="detailTit">
+                <span class="spanCor">商品介绍</span>
+                <span>商品评价</span>
+            </div>
+            <div class="bigPicShow" id="bigPicShow">
+                <img src="{{item.img2}}"/>
+                <img src="{{item.img3}}">
+                <img src="{{item.img4}}">
+                <img src="{{item.img2}}">
+                <img src="{{item.img3}}">
+                <img src="{{item.img4}}">               
+            </div>
+            <div class="usersCom" >
+                <a href="javascript:;">欢迎您第一个发表评论</a>
+            </div>
+        </div>
+        {{/each}}
+</script>
+

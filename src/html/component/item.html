@@ -5,14 +5,14 @@
 		
 		<li class="goodsList">
 			<div class="imageShow">
-				<a href="/html/detail.html?id={{ item.id }}"><img src="{{ item.img }}"></a>
+				<a href="/html/detail-1.html?id={{ item.id }}"><img src="{{ item.img }}"></a>
 			</div>
 			<div class="titPub">
 				<p><a href="javascript:;">{{ item.title }}</a></p>
 			    <p class="titSmall">{{ item.title2 }}</p>
 			</div>			
 			<span class="goodsPrice">{{ item.price }}</span>
-			<span class="addCart"><a href="javascript:;" >立即购买</a></span>		
+			<span class="addCart" id="addCart"><a href="javascript:;" >立即购买</a></span>		
 		</li>
 		{{/each}}
 	</script>

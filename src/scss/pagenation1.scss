@@ -2,11 +2,11 @@
 @import "./component/footer.scss";
 @import "./component/base.scss";
 @import "./component/item.scss";
-@import "./component/itemaside.scss";
+@import "./component/itemaside.scss"; 
 
 .header-Img{width:1200px;height: 220px;margin: 0 auto 15px;}
-	main{width:1200px;margin:0 auto;
-		section{ width:990px; margin:15px auto 25px;float:left;background-color:#fff;
+	main{width:1200px;margin:0 auto;min-height:1000px;
+		section{ width:990px; margin:15px auto 0;float:left;background-color:#fff;
 	      .filter{height:70px; margin-bottom: 15px;font-size: 14px;position:relative;background-color:#fff;
 		      .filterfeature{height:35px;border-bottom: 1px solid #e1e1e1;line-height: 35px;
 		         .filterTitle{width:100px;text-align: center;}
@@ -25,7 +25,8 @@
             .mainRank{width:100px;background-color:#e4004f;text-align: center;color:#fff;font-size: 14px;
 	            cursor: pointer;float:left;}
 	         .totalNum{position:absolute;left:650px;span{color:#e4004f;}}	        
-	     }	
+		  }
+		  	
 		}
 		aside{width:195px; min-height:300px;float:right;background-color:#fff;
 		   .loveTitle{display:block; height:30px;line-height: 30px;background-color:#e50150;padding:0 13px;
