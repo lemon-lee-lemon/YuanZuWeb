@@ -39,6 +39,8 @@ define(["jquery","cookie"],()=>{
                 cartNum += item.num;               
                 });
                 $("#cartNum").html(cartNum);    
+                }else{
+                    $("#cartNum").html(0);
                 }
         }     
     }

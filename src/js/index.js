@@ -58,6 +58,3 @@ require(["./requirejs.config"],()=>{
   });
 
 }) 
-
-
-

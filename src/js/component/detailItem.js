@@ -1,4 +1,5 @@
-define(["jquery","template","parabola","cookie"],($,template)=>{
+define(["jquery","template","getCookie","parabola","cookie"],
+($,template,getCookie)=>{
     class DetailItem{
         constructor(){
           
@@ -23,6 +24,7 @@ define(["jquery","template","parabola","cookie"],($,template)=>{
                           $("#section").html(html);                         
                             this.fdj();
                             this.goodsIntro(); 
+                            this.changeNum();
                             this.addCart(objId); 
                                                          
                       }
@@ -32,7 +34,8 @@ define(["jquery","template","parabola","cookie"],($,template)=>{
               
            })
 
-        }
+        }/* end */
+
         fdj(){
               
             /*放大镜*/
@@ -75,7 +78,8 @@ define(["jquery","template","parabola","cookie"],($,template)=>{
             })
             
         
-        }
+        }/* end */
+
         goodsIntro(){   /* 商品介绍-评价背景色 */
             $("#detailTit span").hover(function(){  
                 $(this).addClass("changeColor");
@@ -90,84 +94,51 @@ define(["jquery","template","parabola","cookie"],($,template)=>{
                 $(this).addClass("changeColor").prev().removeClass("spanCor");
                 $("#bigPicShow").hide().next().show();
             })   
-        }
+        }/* end */
 
         /* 购物车 */
         addCart(objId){
-            this.changeNum();          
-            
-            /* 点击“加入购物车” 抛入购物车动画效果 */ 
+               /* 点击加入购物车 */
                $("#addCart").on("click",()=>{
-                  $("#moni").show().find("img").prop("src",$("#smallBox img").prop("src"));
-                  let hei=50+$(window).scrollTop();
-                   var bool=new Parabola({
-                      el: "#moni",
-                      offset: [650, hei],
-                     /*  targetEl: $("#btnCart"), */
-                      curvature: 0.0002,
-                      duration: 600,
-                      callback: function(){                       
-                        $("#moni").hide();
-                        bool.reset();
-                      }                      
-                   });
-                    bool.start();                 
-                 this.getCookie(objId);
+                  this.addAnimate();                  
+                  getCookie.init(objId);
                })
-
-              /* 点击“立即购买” */  
-              $("#soonBuy").on("click",()=>{
-                  if($.cookie("userInfor")){
-                       location.href="/html/myCart.html";
-                  }else{
-                    if(confirm("您还没登录，赶快去登录吧~")){
-                       location.href = "/html/login.html";
-                    }
-                  }
-                this.getCookie(objId);
-              })
-              
-              
-               
-        };
-       
-        /* 存cookie单独封装一个方法 */
-       getCookie(objId){ 
-            let objBuyInfor={
-                id : parseInt(objId.id),
-                src :$("#smallBox img").prop("src"),
-                url:location.href,
-                title:$("#purTitle").html(),
-                price : $("#youhuiPrice").html().slice(1),
-                name : $("#purTitle").html(),
-                num : parseInt($("#buyNumbers").val())
-            };
-           /*  console.log(objBuyInfor); */
-            let arrBuyInfor = $.cookie("buyInfor")? JSON.parse($.cookie("buyInfor")):[];             
-            let index;
-            let panduan=arrBuyInfor.some(function(item,i){
-                index = i;
-                return objBuyInfor.id===item.id;
-            })   
-                  
-            panduan? arrBuyInfor[index].num+=objBuyInfor.num : arrBuyInfor.push(objBuyInfor);
-
+               /* 点击立即购买 */
+               $("#soonBuy").on("click",function(){
            
-             $.cookie("buyInfor",JSON.stringify(arrBuyInfor),{expires:100,path:"/"});
-                      
-           /*  console.log( $.cookie("buyInfor"));  */
-            
-            /* cookie渲染右边栏商品数量 */
-            if($.cookie("buyInfor")){
-                let cookieNum=  JSON.parse($.cookie("buyInfor"));
-                let cartNum = 0;
-                cookieNum.forEach((item,i) => {
-                cartNum += item.num;               
-                });
-                $("#cartNum").html(cartNum);    
-            }
+                if($.cookie("userInfor")){
+                    location.href="/html/myCart.html";               
+                }else{
+                    if(confirm("您还没登录，赶快去登录吧~")){
+                        location.href = "/html/login.html";
+                    }
+                }              
+                getCookie.init(objId); 
+                   
+            })
+               
+        }/* end */
 
-        };
+        /*  抛入购物车动画效果 */ 
+        addAnimate(){
+            
+            $("#moni").show().find("img").prop("src",$("#smallBox img").prop("src"));
+            let hei=50+$(window).scrollTop();
+            var bool=new Parabola({
+                el: "#moni",
+                offset: [650, hei],
+                /*  targetEl: $("#btnCart"), */
+                curvature: 0.0002,
+                duration: 600,
+                callback: function(){                       
+                    $("#moni").hide();
+                    bool.reset();
+                }                      
+            });
+            bool.start();                 
+           
+           
+        }  /* end */ 
 
 
         /* 增减商品数量 */
@@ -179,7 +150,6 @@ define(["jquery","template","parabola","cookie"],($,template)=>{
                 if(parseInt($("#buyNumbers").val())<1) $("#buyNumbers").val(1);
             })
         };
-
 
         
     }

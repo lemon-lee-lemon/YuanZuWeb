@@ -12,7 +12,9 @@ require.config({  //配置文件
 		"url":"js/component/url",
 		"item":"js/component/item",
 		"itemaside":"js/component/itemaside",
-		"detailItem":"js/component/detailItem"
+		"detailItem":"js/component/detailItem",
+		"getCookie":"js/component/getCookie"
+		
 		
 		
 	},
