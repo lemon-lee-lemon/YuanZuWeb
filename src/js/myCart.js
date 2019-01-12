@@ -1,13 +1,13 @@
 require(["./requirejs.config"],()=>{
-    require(["jquery","bootstrap","header","footer"],()=>{
-
+    require(["jquery","bootstrap","header","footer"],()=>{        
         (function(){
-            if(!($.cookie("buyInfor"))){
-               $("#emptyCart").show();
-               $("#cartBox").hide();
+            if($.cookie("buyInfor") && JSON.parse($.cookie("buyInfor")).length!=0){
+                $("#emptyCart").hide();
+                $("#cartBox").show();
             }else{
-              $("#emptyCart").hide();
-              $("#cartBox").show();
+                $("#emptyCart").show();
+                $("#cartBox").hide();
+             
             }
         })()
        
@@ -15,11 +15,8 @@ require(["./requirejs.config"],()=>{
           constructor(){
             this.init();
           }
-            init(){
-                this.creatCart();
-                this.minusNum();
-                this.plusNum(); 
-                this.deleteCart();  
+            init(){                
+                this.creatCart();                
                 this.total();                                      
             }
 
@@ -50,24 +47,24 @@ require(["./requirejs.config"],()=>{
                             </tr> `; 
                 })
                 $("#cartBox tbody").html(str); 
+                this.minusNum();
+                this.plusNum(); 
+                this.deleteCart();  
                                                 
             }/* end */
             
-             /* 减商品数量 */
+             /* 增加商品数量 */
              plusNum(){
-
                 /* 当前购物车商品总数量 */ 
-                let getBuyInfor=  JSON.parse($.cookie("buyInfor"));              
-                let cartNumPlus = 0,
-                    _this = this,
-                    flag=true;
-                getBuyInfor.forEach((item,i) => {
-                    cartNumPlus += item.num;               
-                });   
-                /* 点击减少按钮 */
+                let  _this = this,
+                     flag=true;                              
                 if(flag){
-                    $(".plus").on("click",function(){ 
-                                            
+                    $(".plus").on("click",function(){
+                        let getBuyInfor=  JSON.parse($.cookie("buyInfor")),
+                            cartNumPlus = 0; 
+                        getBuyInfor.forEach((item,i) => {
+                            cartNumPlus += item.num;               
+                        });                     
                         $(this).next().val(parseInt($(this).next().val())-1);
     
                         if( $(this).next().val()<1){
@@ -96,16 +93,15 @@ require(["./requirejs.config"],()=>{
                     })
                 }
             }/* end */
-             /* 点击增加按钮 */
-             minusNum(){
-                let getBuyInfor=  JSON.parse($.cookie("buyInfor"));
-                let cartNumMinus = 0,
-                   _this = this;
-                getBuyInfor.forEach((item,i) => {
-                    cartNumMinus += item.num;               
-                }); 
+             /* 点击减少按钮 */
+             minusNum(){               
+                let  _this = this;
                 $(".minus").on("click",function(){
-                    
+                    let getBuyInfor=  JSON.parse($.cookie("buyInfor"));
+                    let cartNumMinus = 0;
+                    getBuyInfor.forEach((item,i) => {
+                        cartNumMinus += item.num;               
+                    });                    
                     $(this).prev().val(parseInt($(this).prev().val())+1);  
                     cartNumMinus++;
                     /* 重新存cookie */ 
@@ -125,8 +121,7 @@ require(["./requirejs.config"],()=>{
             
             /* 删除商品 */
             deleteCart(){
-                  let  _this=this;
-                  console.log(JSON.parse($.cookie("buyInfor")),111);
+                  let  _this=this;                 
                 $(".delBtn").on("click",function(){
                     if(confirm("确定要删除我吗？")){
                         let cartNumDel = 0;
@@ -143,10 +138,13 @@ require(["./requirejs.config"],()=>{
                         JSON.parse($.cookie("buyInfor")).forEach((item,i) => {
                             cartNumDel += item.num;               
                         });
-                        $("#cartNum").html(cartNumDel);
+                        if(cartNumDel===0){
+                            $("#emptyCart").show();
+                            $("#cartBox").hide();
+                        }
+                        $("#cartNum").html(cartNumDel);                        
                         _this.total();                      
-                        $(this).parents("tr").remove();
-
+                        $(this).parents("tr").remove();                                             
                     }                  
                 })
                 
