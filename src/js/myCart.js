@@ -36,9 +36,9 @@ require(["./requirejs.config"],()=>{
                                 <td class="cartPrice">￥${item.price}</td>
                                 <td class="cartQuantity">
                                     <div class="wrap">                          
-                                        <span >-</span>
+                                        <span class="plus">-</span>
                                         <input type="text" value="${item.num}"/>
-                                        <span >+</span>
+                                        <span class="minus">+</span>
                                 </div>  
                                 </td>                       
                                 <td>
@@ -55,41 +55,49 @@ require(["./requirejs.config"],()=>{
              changeNum(){
                 /* 当前购物车商品总数量 */
                 let getBuyInfor=  JSON.parse($.cookie("buyInfor"));
-                let cartNum = 0;
-                let _this = this;
+                let cartNum = 0,
+                    _this = this,
+                    flag=true;
                 /* console.log(getBuyInfor); */
                 getBuyInfor.forEach((item,i) => {
                 cartNum += item.num;               
                 });
+
                 /* 点击减少按钮 */
-                $(".cartQuantity .wrap").on("click","span:first",function reduce(){
-                    $(this).next().val(parseInt($(this).next().val())-1); 
-
-                    if( $(this).next().val()<1){
-                        $(this).next().val(1);
-                        $(".cartQuantity .wrap").off("click","span:first",reduce());
-                    }
-                    if(--cartNum<0){
-                        cartNum=0;
-                        $(".cartQuantity .wrap").off("click","span:first",reduce());
-                    }
-
-                    /* 重新存cookie */ 
-                    getBuyInfor.forEach((item,i)=>{
-                      
-                       if(item.id===Number($(this).parents("tr").find("td:first span").html())){                                            
-                           if(--item.num<1){
-                               item.num=1;                             
+                if(flag){
+                    $(".plus").on("click",function(){                        
+                        $(this).next().val(parseInt($(this).next().val())-1);
+    
+                        if( $(this).next().val()<1){
+                            $(this).next().val(1);                      
+                            flag=false;
+                        }else{
+                            if(--cartNum<=1){
+                                cartNum=1;
+                                flag=false;
+                            }
+                        }
+                        
+                        /* 重新存cookie */ 
+                        getBuyInfor.forEach((item,i)=>{
+                          
+                           if(item.id===Number($(this).parents("tr").find("td:first span").html())){                                            
+                               if(--item.num<1){
+                                   item.num=1;                             
+                               }
+                               $.cookie("buyInfor",JSON.stringify(getBuyInfor),{expires:100,path:"/"});
+                               /* console.log($.cookie("buyInfor")); */                          
                            }
-                           $.cookie("buyInfor",JSON.stringify(getBuyInfor),{expires:100,path:"/"});
-                           /* console.log($.cookie("buyInfor")); */                          
-                       }
-                    });
-                    /* 渲染右边栏购物车 */  
-                    $("#cartNum").html(cartNum); 
-                    _this.total();                      
-                }).on("click","span:last",function(){    /* 点击增加按钮 */
+                        });
+                        /* 渲染右边栏购物车 */  
+                        $("#cartNum").html(cartNum); 
+                        _this.total();  
+                    })
+                }
+                
 
+                /* 点击增加按钮 */
+                $(".minus").on("click",function(){
                     $(this).prev().val(parseInt($(this).prev().val())+1);  
                     cartNum++;
                     /* 重新存cookie */ 
@@ -103,8 +111,10 @@ require(["./requirejs.config"],()=>{
                         }
                     });
                         $("#cartNum").html(cartNum);
-                        _this.total();                  
-                }) 
+                        _this.total(); 
+                        console.log(JSON.parse($.cookie("buyInfor")));      
+                })
+               
             }/* end */
 
             /* 删除商品 */
@@ -118,18 +128,17 @@ require(["./requirejs.config"],()=>{
                         getBuyInfor.forEach((item,index)=>{
                         
                             if(item.id===Number($(this).parents("tr").find("td:first span").html())){                                            
-                                getBuyInfor.splice(index,1);
+                                getBuyInfor.splice(index,1);                                
                                 $.cookie("buyInfor",JSON.stringify(getBuyInfor),{expires:100,path:"/"});
-                                /* console.log($.cookie("buyInfor"));  */                         
+                                console.log(JSON.parse($.cookie("buyInfor")),index);                   
                             }
-                        });
-                       
-                        $(this).parents("tr").remove();                              
+                        });                        
                         getBuyInfor.forEach((item,i) => {
                            cartNum += item.num;               
-                        });
+                        });console.log(cartNum);
                         $("#cartNum").html(cartNum);
                         _this.total(); 
+                        $(this).parents("tr").remove();  
                     }                  
                 })
             }/* end */

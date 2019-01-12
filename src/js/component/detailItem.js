@@ -5,7 +5,7 @@ define(["jquery","template","getCookie","parabola","cookie"],
           
         }
         init(url,objId){  
-            console.log(url,parseInt(objId.id));          
+            /* console.log(url,parseInt(objId.id));   */        
            new Promise((resolve,reject)=>{
                $("#section").load("/html/component/detailItem.html",function(){
                    resolve();  
