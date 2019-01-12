@@ -17,6 +17,9 @@ require(["./requirejs.config"],()=>{
           }
             init(){
                 this.creatCart();
+                this.minusNum();
+                this.plusNum(); 
+                this.deleteCart();  
                 this.total();                                      
             }
 
@@ -46,38 +49,36 @@ require(["./requirejs.config"],()=>{
                                 </td>
                             </tr> `; 
                 })
-                $("#cartBox tbody").html(str);
-                this.changeNum(); 
-                this.deleteCart();                    
+                $("#cartBox tbody").html(str); 
+                                                
             }/* end */
             
-             /* 增减商品数量 */
-             changeNum(){
-                /* 当前购物车商品总数量 */
-                let getBuyInfor=  JSON.parse($.cookie("buyInfor"));
-                let cartNum = 0,
+             /* 减商品数量 */
+             plusNum(){
+
+                /* 当前购物车商品总数量 */ 
+                let getBuyInfor=  JSON.parse($.cookie("buyInfor"));              
+                let cartNumPlus = 0,
                     _this = this,
                     flag=true;
-                /* console.log(getBuyInfor); */
                 getBuyInfor.forEach((item,i) => {
-                cartNum += item.num;               
-                });
-
+                    cartNumPlus += item.num;               
+                });   
                 /* 点击减少按钮 */
                 if(flag){
-                    $(".plus").on("click",function(){                        
+                    $(".plus").on("click",function(){ 
+                                            
                         $(this).next().val(parseInt($(this).next().val())-1);
     
                         if( $(this).next().val()<1){
                             $(this).next().val(1);                      
                             flag=false;
                         }else{
-                            if(--cartNum<=1){
-                                cartNum=1;
+                            if(--cartNumPlus<=1){
+                                cartNumPlus=1;
                                 flag=false;
                             }
                         }
-                        
                         /* 重新存cookie */ 
                         getBuyInfor.forEach((item,i)=>{
                           
@@ -89,58 +90,66 @@ require(["./requirejs.config"],()=>{
                                /* console.log($.cookie("buyInfor")); */                          
                            }
                         });
-                        /* 渲染右边栏购物车 */  
-                        $("#cartNum").html(cartNum); 
-                        _this.total();  
+                        /* 渲染右边栏购物车 */
+                        $("#cartNum").html(cartNumPlus); 
+                        _this.total();                         
                     })
                 }
-                
-
-                /* 点击增加按钮 */
+            }/* end */
+             /* 点击增加按钮 */
+             minusNum(){
+                let getBuyInfor=  JSON.parse($.cookie("buyInfor"));
+                let cartNumMinus = 0,
+                   _this = this;
+                getBuyInfor.forEach((item,i) => {
+                    cartNumMinus += item.num;               
+                }); 
                 $(".minus").on("click",function(){
+                    
                     $(this).prev().val(parseInt($(this).prev().val())+1);  
-                    cartNum++;
+                    cartNumMinus++;
                     /* 重新存cookie */ 
-                    getBuyInfor.forEach((item,i)=>{
-                      
+                    getBuyInfor.forEach((item,i)=>{                      
                         if(item.id===Number($(this).parents("tr").find("td:first span").html())){
-
                             item.num++; 
                             $.cookie("buyInfor",JSON.stringify(getBuyInfor),{expires:100,path:"/"});
-                                                   
+                                                    
                         }
                     });
-                        $("#cartNum").html(cartNum);
-                        _this.total(); 
+                        $("#cartNum").html(cartNumMinus);
+                        _this.total();                       
                         console.log(JSON.parse($.cookie("buyInfor")));      
-                })
-               
-            }/* end */
-
+                })             
+             } /* end */
+                  
+            
             /* 删除商品 */
             deleteCart(){
-                let getBuyInfor=  JSON.parse($.cookie("buyInfor"));
-                let cartNum = 0, 
-                     _this=this;
+                  let  _this=this;
+                  console.log(JSON.parse($.cookie("buyInfor")),111);
                 $(".delBtn").on("click",function(){
                     if(confirm("确定要删除我吗？")){
+                        let cartNumDel = 0;
+                        let getBuyInforDet=  JSON.parse($.cookie("buyInfor"));
                         /* 重新存cookie */ 
-                        getBuyInfor.forEach((item,index)=>{
+                        getBuyInforDet.forEach((item,index)=>{
                         
                             if(item.id===Number($(this).parents("tr").find("td:first span").html())){                                            
-                                getBuyInfor.splice(index,1);                                
-                                $.cookie("buyInfor",JSON.stringify(getBuyInfor),{expires:100,path:"/"});
+                                getBuyInforDet.splice(index,1);                                
+                                $.cookie("buyInfor",JSON.stringify(getBuyInforDet),{expires:100,path:"/"});
                                 console.log(JSON.parse($.cookie("buyInfor")),index);                   
                             }
                         });                        
-                        getBuyInfor.forEach((item,i) => {
-                           cartNum += item.num;               
-                        });console.log(cartNum);
-                        $("#cartNum").html(cartNum);
-                        _this.total(); 
-                        $(this).parents("tr").remove();  
+                        JSON.parse($.cookie("buyInfor")).forEach((item,i) => {
+                            cartNumDel += item.num;               
+                        });
+                        $("#cartNum").html(cartNumDel);
+                        _this.total();                      
+                        $(this).parents("tr").remove();
+
                     }                  
                 })
+                
             }/* end */
 
            /* 右下角总计结算数据 */
