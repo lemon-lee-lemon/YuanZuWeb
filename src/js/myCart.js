@@ -13,6 +13,7 @@ require(["./requirejs.config"],()=>{
        
        class myCart{
           constructor(){
+            this.checkNum=0;  /* 单选框数量 */
             this.init();
           }
             init(){                
@@ -25,9 +26,14 @@ require(["./requirejs.config"],()=>{
                 var str="";
                 buyInfor.forEach((item,i)=>{ 
                     
-                     str +=  ` <tr>                        
+                     str +=  ` <tr> 
+                               <td>
+                                    <label>
+                                      <input type="checkbox" class="acheck">
+                                    </label> 
+                               </td>                                                 
                                 <td class="cartGoodsname">
-                                    <span class="id">${item.id}</span>
+                                    <span class="id">${item.id}</span>                                   
                                     <a href="${item.url}" class="wrapImg">
                                     <img src="${item.src}" alt="${item.title}" title="${item.title}"/>
                                     </a>
@@ -49,10 +55,51 @@ require(["./requirejs.config"],()=>{
                 $("#cartBox tbody").html(str); 
                 this.minusNum();
                 this.plusNum(); 
-                this.deleteCart();  
-                                                
+                this.deleteCart();
+                this.clickAllCheck();  
+                this.clickACheck();           
             }/* end */
-            
+
+             /* 全选  */
+             clickAllCheck(){
+                 let _this=this;
+                $("#allcheck").on("click",function(){                 
+                    if($(this).prop("checked")){
+                        $(this).prev().css({backgroundPositionY:-20});
+                        $(".acheck").parent().css({backgroundPositionY:-20});
+                        $(".acheck").prop("checked",true);                       
+                    }else{
+                        $(this).prev().css({backgroundPositionY:0});
+                        $(".acheck").parent().css({backgroundPositionY:0});
+                        $(".acheck").prop("checked",false); 
+                    } 
+                    /* 设定单选框数量 */
+                    _this.checkNum = $(this).prop("checked")? $(".acheck").length:0;                    
+                })
+             }/* end */
+
+             /* 单选  */
+             clickACheck(){
+                 let _this = this;
+                 $("#cartBox tbody").on("click",".acheck",function(){                    
+                    if($(this).prop("checked")){                       
+                        $(this).parent().css({backgroundPositionY:-20});
+                        _this.checkNum++;
+                    }else{
+                        $(this).parent().css({backgroundPositionY:0}); 
+                        _this.checkNum--;
+                    }
+                    if(_this.checkNum===$(".acheck").length){
+                        $("#allcheck").prev().css({backgroundPositionY:-20});
+                        $("#allcheck").prop("checked",true);
+                    } else{
+                        $("#allcheck").prev().css({backgroundPositionY:0});
+                        $("#allcheck").prop("checked",false);
+                    }                  
+                    console.log(_this.checkNum);
+                 })
+             }/* end */
+
              /* 增加商品数量 */
              plusNum(){
                 /* 当前购物车商品总数量 */ 
@@ -60,6 +107,7 @@ require(["./requirejs.config"],()=>{
                      flag=true;                              
                 if(flag){
                     $(".plus").on("click",function(){
+                        /* 每次click，都要重新获取cookie */
                         let getBuyInfor=  JSON.parse($.cookie("buyInfor")),
                             cartNumPlus = 0; 
                         getBuyInfor.forEach((item,i) => {
@@ -75,11 +123,11 @@ require(["./requirejs.config"],()=>{
                                 cartNumPlus=1;
                                 flag=false;
                             }
-                        }
+                        }                       
                         /* 重新存cookie */ 
                         getBuyInfor.forEach((item,i)=>{
                           
-                           if(item.id===Number($(this).parents("tr").find("td:first span").html())){                                            
+                           if(item.id===Number($(this).parents("tr").find(".cartGoodsname span").html())){                                            
                                if(--item.num<1){
                                    item.num=1;                             
                                }
@@ -106,7 +154,7 @@ require(["./requirejs.config"],()=>{
                     cartNumMinus++;
                     /* 重新存cookie */ 
                     getBuyInfor.forEach((item,i)=>{                      
-                        if(item.id===Number($(this).parents("tr").find("td:first span").html())){
+                        if(item.id===Number($(this).parents("tr").find(".cartGoodsname span").html())){
                             item.num++; 
                             $.cookie("buyInfor",JSON.stringify(getBuyInfor),{expires:100,path:"/"});
                                                     
@@ -126,13 +174,14 @@ require(["./requirejs.config"],()=>{
                     if(confirm("确定要删除我吗？")){
                         let cartNumDel = 0;
                         let getBuyInforDet=  JSON.parse($.cookie("buyInfor"));
+                         /* 对单选全选影响 */
+                         
                         /* 重新存cookie */ 
                         getBuyInforDet.forEach((item,index)=>{
-                        
+                            /* 删除的这一行的id与cookie中的id名相等，就删除这一条记录 */
                             if(item.id===Number($(this).parents("tr").find("td:first span").html())){                                            
                                 getBuyInforDet.splice(index,1);                                
-                                $.cookie("buyInfor",JSON.stringify(getBuyInforDet),{expires:100,path:"/"});
-                                console.log(JSON.parse($.cookie("buyInfor")),index);                   
+                                $.cookie("buyInfor",JSON.stringify(getBuyInforDet),{expires:100,path:"/"});                                               
                             }
                         });                        
                         JSON.parse($.cookie("buyInfor")).forEach((item,i) => {
