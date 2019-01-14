@@ -74,8 +74,9 @@ require(["./requirejs.config"],()=>{
                         $(".acheck").prop("checked",false); 
                     } 
                     /* 设定单选框数量 */
-                    _this.checkNum = $(this).prop("checked")? $(".acheck").length:0;                    
-                })
+                    _this.checkNum = $(this).prop("checked")? $(".acheck").length:0;
+                    _this.total();                      
+                })                
              }/* end */
 
              /* 单选  */
@@ -95,9 +96,9 @@ require(["./requirejs.config"],()=>{
                     } else{
                         $("#allcheck").prev().css({backgroundPositionY:0});
                         $("#allcheck").prop("checked",false);
-                    }                  
-                    console.log(_this.checkNum);
-                 })
+                    } 
+                    _this.total(); 
+                 })                
              }/* end */
 
              /* 增加商品数量 */
@@ -161,8 +162,7 @@ require(["./requirejs.config"],()=>{
                         }
                     });
                         $("#cartNum").html(cartNumMinus);
-                        _this.total();                       
-                        console.log(JSON.parse($.cookie("buyInfor")));      
+                        _this.total(); 
                 })             
              } /* end */
                   
@@ -174,12 +174,11 @@ require(["./requirejs.config"],()=>{
                     if(confirm("确定要删除我吗？")){
                         let cartNumDel = 0;
                         let getBuyInforDet=  JSON.parse($.cookie("buyInfor"));
-                         /* 对单选全选影响 */
                          
                         /* 重新存cookie */ 
                         getBuyInforDet.forEach((item,index)=>{
                             /* 删除的这一行的id与cookie中的id名相等，就删除这一条记录 */
-                            if(item.id===Number($(this).parents("tr").find("td:first span").html())){                                            
+                            if(item.id===Number($(this).parents("tr").find(".cartGoodsname span").html())){                                            
                                 getBuyInforDet.splice(index,1);                                
                                 $.cookie("buyInfor",JSON.stringify(getBuyInforDet),{expires:100,path:"/"});                                               
                             }
@@ -191,9 +190,19 @@ require(["./requirejs.config"],()=>{
                             $("#emptyCart").show();
                             $("#cartBox").hide();
                         }
-                        $("#cartNum").html(cartNumDel);                        
-                        _this.total();                      
-                        $(this).parents("tr").remove();                                             
+                        $("#cartNum").html(cartNumDel);
+                        $(this).parents("tr").remove();
+                        /* 判断本行是否被选中 */
+                        let aCheckDel = $(this).parents("tr").find(".acheck");
+                        if(aCheckDel.prop("checked"))  _this.checkNum--;
+                        if(_this.checkNum === $(".acheck").length){
+                            $("#allcheck").prev().css({backgroundPositionY:-20});
+                            $("#allcheck").prop("checked",true);
+                        }else{
+                            $("#allcheck").prev().css({backgroundPositionY:0});
+                            $("#allcheck").prop("checked",false);
+                        }  
+                        _this.total();                                                  
                     }                  
                 })
                 
@@ -201,20 +210,25 @@ require(["./requirejs.config"],()=>{
 
            /* 右下角总计结算数据 */
            total(){
-            let getBuyInfor=  JSON.parse($.cookie("buyInfor"));
-            let cartNum = 0,
-                cartTotalMoney =0;
-            getBuyInfor.forEach((item,i) => {
-                cartNum += item.num; 
-                cartTotalMoney += item.num * item.price;              
-             });
-
+               let cartNumSum=0,
+                   cartPriceSum=0;
+               $(".acheck").each(function(i,acheck){
+                    /* 本行被选中 */
+                    if($(acheck).prop("checked")){
+                        /* 商品数量 */
+                       let cartPrice = parseInt($(acheck).parents("tr").find(".cartPrice").html().slice(1));
+                       let cartNum = parseInt($(acheck).parents("tr").find(".cartQuantity input").val());
+                       cartNumSum += cartNum;
+                       cartPriceSum += cartPrice*cartNum;                     
+                    }
+                }) 
+               
                /* 数量总计 */
-               $("#cartTotalNum").html(cartNum);
+               $("#cartTotalNum").html(cartNumSum);
 
                /* 商品金额总计 */               
-               $("#cartTotalMoney").html("￥"+cartTotalMoney.toFixed(2));
-               $("#total").html("￥"+cartTotalMoney.toFixed(2));
+               $("#cartTotalMoney").html("￥"+cartPriceSum.toFixed(2));
+               $("#total").html("￥"+cartPriceSum.toFixed(2));
                
                /* 进入结算页面 */
                $("#checkout").on("click",function(){
