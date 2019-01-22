@@ -22,7 +22,7 @@ require(["./requirejs.config"],()=>{
          $("#telRegister").on("blur",function(){ 
                 if($("#telRegister").val()===''){
                      $("#warn-notice-telEmp").show();
-                     flag=false;console.log(flag);
+                     flag=false;
 	            	 $("#telLabel").css({"borderColor":'red'});	   
                 }else if(!(/^1[34578]\d{9}$/.test($("#telRegister").val()))){
 	            	 $("#warn-notice-style").show();

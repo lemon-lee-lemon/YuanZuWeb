@@ -1,0 +1,78 @@
+@import "./component/base.scss";
+@import "./component/footer.scss";
+@import "./component/header.scss";
+
+main{width:1200px;margin:0 auto;a:hover{color:#dc0330;}position: relative;
+    .main-catalog{height: 46px;line-height: 46px;}
+    .cartStep{width:1200px;height: 31px;overflow: hidden;line-height: 31px;border-radius: 10px;
+         margin-bottom: 15px;
+         ul{width:100%;background:url("/static/imgs/02-list/stepbg.jpg") no-repeat 0 -33px;float: left;   
+          li{float: left;width:25%;font-size: 14px;text-align: center;}
+         }
+         .stepColor{color: #fff;}   
+      }  
+    /* 收件人信息 */
+    .addressInfor{width:1200px;border:1px solid #c7c7c7;overflow: hidden;position: relative;
+        min-height: 110px;border-bottom:none;
+        .addAsd{display: block; width:109px;height: 25px;line-height: 25px;text-align: center;
+            margin:10px auto 10px 213px;  background-color: #e7e5e6;} 
+    }   
+    .title{width:170px;height:100%;text-align: center;padding-top: 30px; position: absolute;left: 0;font-size: 14px;
+        background: linear-gradient(to bottom,#e6e4e5, #f9f9f9);
+    }
+    .detailAddress{ margin-bottom: 10px;position: relative;
+        ul{width:995px;padding:15px 0 0 185px;
+           li{padding: 0 13px;height: 24px;line-height: 24px;margin-bottom: 3px;}
+        }  
+        .defaultArs{position:absolute;right:150px; em:last-child{display: none;margin-left: 15px;}
+             em{a{background-color:transparent;}}
+        }  
+    }
+    .adsForm{width:690px;height:400px;background-color: #fff;position: absolute;
+        border:1px solid #c7c7c7;left: 214px;top:143px;z-index:3;display:none;
+        h3{font-size: 14px;font-weight: normal;height: 34px;line-height: 34px;padding-left: 10px;}
+        span{color:red;}
+        li{margin:20px 60px;position:relative; input{position: absolute;left:80px;outline: none;}}
+        li:nth-child(2){margin-left:68px;}
+        li:nth-child(3){input{width:400px;}}
+        li:nth-child(6){margin-bottom: 30px; span{position: absolute;left:260px;}}
+        li:last-child{a{background-color: #247391;color: #fff;text-decoration: none;
+            width:48px;padding: 8px 8px;margin-right: 20px;}}
+    }
+   /* 购物清单 */
+   .buyList{width:1200px;border:1px solid #c7c7c7;overflow: hidden;position: relative;min-height: 110px;
+        border-bottom: none;
+       .goBackCart{position: absolute;right: 12px;top:15px;}
+       .detailList{width:998px;background-color: #fff;margin:30px 15px 15px 186px;
+        text-align: center;border-collapse:collapse;border:1px solid #c7c7c7;
+          th,td{width:25%;height: 40px;line-height: 40px;border-bottom:1px solid #c7c7c7;text-align: center; }
+          thead{background-color: #e6e4e5;font-weight: bold;}
+          tbody{tr{td:nth-child(even){color: red;}}}
+          tfoot{text-align: left;}
+          .delivery{padding-top: 15px;padding-left:20px;position:relative;text-align:left; 
+            span{font-size: 14px;position: absolute;top:15px;}
+             >div{display:inline-block;margin-left:104px;}
+          }
+          .getTime{padding-left: 20px;text-align:left; input{outline: none;width:131px;height: 20px;}}}
+          .beizhu{margin-left: 187px;margin-bottom:15px;line-height:30px; >span{color:red;}            
+            .inputCon{input{width:160px;outline: none;width:960px;padding-left: 3px;}}
+          }         
+    }
+    /* 支付方式 */
+    .payMethod{width:1200px;border:1px solid #c7c7c7;overflow: hidden;position: relative;
+        min-height: 110px;line-height:30px;border-bottom: none;
+         .detailMethod{position: absolute;left:187px;top:30px;span{margin-right: 10px;}}
+    }
+    /* 订单结算 */
+    .checkOutAll{width:1200px;border:1px solid #c7c7c7;overflow: hidden;position: relative;
+        min-height: 110px;
+        .forBill{position: absolute;left: 187px;top:20px;span{margin-right: 10px;}}
+        .palceOrder{height: 212px;width:410px; border-left: 1px solid #c7c7c7;
+           margin:15px 46px 80px 743px;
+           li{height: 34px;line-height: 28px;padding-left: 66px;position: relative;margin-bottom:5px;
+              em{position: absolute;right: 0;}}
+           .payBtn{float: right;width:78px;height: 28px;line-height: 28px;text-align: center;color:#fff;
+              background-color: #de5251;}   
+        }
+    }
+}
